@@ -1,5 +1,6 @@
 library(readxl)
 library(tidyverse)
+library(lubridate)
 
 
 setwd("S:/Veterinary Science/Rescue and Response/Dispatch Training and Resources/Training Checklists/Staff")
@@ -16,9 +17,13 @@ response_staff$month <- month(response_staff$Date)
 
 current_month <- 1
 
-r_staff_plot <- response_staff %>%
+field_time_plot <- response_staff %>%
   filter(month == current_month) %>%
   ggplot(aes(id, Hours, fill = Event)) +
-  geom_col()
+  geom_col() +
+  ggtitle("Field Time by Current Month") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  xlab("Staff Members") + ylab("Accumulated Hours") +
+  labs(fill = "Field Type")
 
-r_staff_plot
+field_time_plot
