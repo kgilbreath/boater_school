@@ -46,7 +46,14 @@ view(full_staff)
 
 full_staff_plot <- full_staff %>%
   filter(month == current_month) %>%
-  ggplot(aes(staff, Hours, fill = Event)) +
+  ggplot(aes(staff, Hours, fill = month)) +
   geom_col()
 
 full_staff_plot
+
+boattime_plot <- full_staff %>%
+  filter(Event == "Boat Time") %>%
+  ggplot(aes(staff, Hours)) +
+  geom_col()
+
+boattime_plot
