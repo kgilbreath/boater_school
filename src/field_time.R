@@ -27,3 +27,14 @@ field_time_plot <- response_staff %>%
   labs(fill = "Field Type")
 
 field_time_plot
+
+field_plot <- function(data = response_staff, cmonth) {
+  response_staff %>%
+  filter(month == cmonth) %>%
+  ggplot(aes(id, Hours, fill = Event)) +
+  geom_col() +
+  ggtitle("Field Time by Current Month") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  xlab("Staff Members") + ylab("Accumulated Hours") +
+  labs(fill = "Field Type")
+}
